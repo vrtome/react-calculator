@@ -1,0 +1,7 @@
+span {
+  width: 400px;
+  height: 60px;
+  display: flex;
+  background-color: lightgray;
+  justify-content: right;
+}
