@@ -15,8 +15,10 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <Display onType={this.state.display} />
-        <Calculator onClick={this.handleOperation} />
+        <div id="interface">
+          <Display onType={this.state.display} />
+          <Calculator onClick={this.handleOperation} />
+        </div>
       </React.Fragment>
     );
   }
@@ -25,6 +27,7 @@ class App extends Component {
     if (this.state.part === 1) {
       if (this.state.operators.indexOf(e) !== -1) {
         this.setState({ part: 2, operator: e, display: e });
+        console.log("now 2");
       } else if (e === "clear") {
         this.setState({
           first: this.state.first.substring(0, this.state.first.length - 1),
@@ -55,13 +58,13 @@ class App extends Component {
     } else if (e === "=") {
       return this.setState({
         display: math[this.state.operator](
-          parseInt(this.state.first),
-          parseInt(this.state.second)
+          parseFloat(this.state.first),
+          parseFloat(this.state.second)
         ),
         part: 3,
         first: math[this.state.operator](
-          parseInt(this.state.first),
-          parseInt(this.state.second)
+          parseFloat(this.state.first),
+          parseFloat(this.state.second)
         ),
       });
     } else if (
@@ -69,7 +72,9 @@ class App extends Component {
       this.state.operators.indexOf(e) !== -1
     ) {
       this.setState({ part: 2, operator: e, display: e, second: "" });
-    } else {
+    } else if (e === "clear" && this.state.part === 3) {
+      this.setState({ part: 1, first: "0", second: "", display: "" });
+    } else if (this.state.part === 3) {
       this.setState({
         part: 1,
         first: e,

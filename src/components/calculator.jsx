@@ -27,7 +27,7 @@ class Calculator extends Component {
           <div className="row">
             <button name=".">.</button>
             <button name="0">0</button>
-            <button name="*">*</button>
+            <button name="*">X</button>
             <button name="=">=</button>
           </div>
           <div className="row">
