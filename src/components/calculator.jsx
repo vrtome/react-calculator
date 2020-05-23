@@ -31,8 +31,11 @@ class Calculator extends Component {
             <button name="=">=</button>
           </div>
           <div className="row">
-            <button name="clear" style={{ width: 400 }}>
-              Clear
+            <button name="clear" style={{ width: 260 }}>
+              C
+            </button>
+            <button name="clear-all" style={{ width: 140 }}>
+              CA
             </button>
           </div>
         </div>
